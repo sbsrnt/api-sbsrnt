@@ -1,13 +1,11 @@
 
 require("dotenv").config();
-import { GraphQLServer, PubSub } from "graphql-yoga";
+import { ApolloServer } from "apollo-server";
 import mongoose from "mongoose";
 
 import schema from "./graphql";
 import { models } from "./db/models";
 import { url } from "./db/config";
-
-const pubsub = new PubSub();
 
 const options = {
   port: process.env.PORT || "4000",
@@ -17,7 +15,6 @@ const options = {
 
 const context = {
   models,
-  pubsub
 };
 
 // Connect to MongoDB with Mongoose.
@@ -32,7 +29,7 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
-const server = new GraphQLServer({
+const server = new ApolloServer({
   schema,
   context
 });
