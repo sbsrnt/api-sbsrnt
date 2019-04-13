@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "start": "yarn babel-node index.js",
-    "build": "nodemon --exec babel-node index.js"
+    "start": "nodemon --exec babel-node index.js"
   },
   "main": "index.js",
   "devDependencies": {
