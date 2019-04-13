@@ -3,9 +3,9 @@ require("dotenv").config();
 import { ApolloServer } from "apollo-server";
 import mongoose from "mongoose";
 
-import schema from "src/graphql";
-import { models } from "src/db/models";
-import { url } from "src/db/config";
+import schema from "./graphql";
+import { models } from "./db/models";
+import { url } from "./db/config";
 
 const options = {
   port: process.env.PORT || "4000",
