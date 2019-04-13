@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run build",
+    "start": "yarn babel-node index.js",
     "build": "nodemon --exec babel-node index.js"
   },
   "main": "index.js",
