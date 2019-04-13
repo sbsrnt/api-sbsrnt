@@ -1,4 +1,4 @@
-import User from "src/graphql/resolvers/User";
+import User from "./User";
 
 const user = async userId => {
   try {
