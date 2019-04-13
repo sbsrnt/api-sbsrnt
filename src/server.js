@@ -17,7 +17,6 @@ const context = {
   models,
 };
 
-// Connect to MongoDB with Mongoose.
 mongoose
   .connect(
     url,
