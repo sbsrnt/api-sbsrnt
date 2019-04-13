@@ -4,6 +4,9 @@ export default {
   Query: {
     user: async (parent, { _id }, context, info) => {
       return await User.findOne({ _id }).exec();
+    },
+    users: async (parent, _, context, info) => {
+      return await User.find({}).exec();
     }
   },
   Mutation: {
