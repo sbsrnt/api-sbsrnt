@@ -1,4 +1,4 @@
-import User from "../../../db/models/User";
+import User from "src/db/models/User";
 
 export default {
   Query: {
