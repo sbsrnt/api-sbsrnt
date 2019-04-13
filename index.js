@@ -37,7 +37,6 @@ const server = new GraphQLServer({
   context
 });
 
-server.start(options, ({ port }) => {
-  console.log('server test')
-  console.log(`🚀 Server is running on http://localhost:${port}`);
+server.listen(options).then(({ url }) => {
+  console.log(`🚀 Server is running on ${url}`);
 });
