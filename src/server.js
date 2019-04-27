@@ -1,4 +1,3 @@
-
 require("dotenv").config();
 import { ApolloServer } from "apollo-server";
 import mongoose from "mongoose";
@@ -6,6 +5,7 @@ import mongoose from "mongoose";
 import schema from "./graphql";
 import { models } from "./db/models";
 import { url } from "./db/config";
+import { getUser } from './graphql/utils';
 
 const options = {
   port: process.env.PORT || "4000",
@@ -30,7 +30,25 @@ mongoose
 
 const server = new ApolloServer({
   schema,
-  context
+  context: async ({req: { headers, body: { operationName }}}) => {
+    if(headers && headers.authorization){
+      const token = await headers.authorization || '';
+
+      const user = await operationName === 'signIn'
+        ? {}
+        : await getUser(token);
+
+      return await {
+        ...context,
+        user
+      }
+    }
+
+    return await {
+      ...context
+    }
+
+  }
 });
 
 server.listen(options).then(({ url }) => {

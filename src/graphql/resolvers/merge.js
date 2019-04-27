@@ -1,12 +1,11 @@
-import User from "./User";
+import User from "../../db/models/User";
 
-const user = async userId => {
+export const user = async userId => {
   try {
     const user = await User.findById(userId);
     return {
       ...user._doc,
       _id: user.id,
-      createdPosts: postMessage.bind(this, user._doc.createdPosts)
     };
   } catch (error) {
     throw error;

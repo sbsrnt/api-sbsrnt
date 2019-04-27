@@ -17,8 +17,8 @@ const UserSchema = new Schema({
     unique: true,
     required: true
   },
-  age: {
-    type: Number,
+  password: {
+    type: String,
     required: true
   },
   posts: [
